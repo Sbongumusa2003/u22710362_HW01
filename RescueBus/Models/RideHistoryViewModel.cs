@@ -5,9 +5,7 @@ using System.Web;
 
 namespace RescueBus.Models
 {
-    public class Reason
+    public class RideHistoryViewModel
     {
-        public int ReasonID { get; set; }
-        public string Description { get; set; }
     }
 }

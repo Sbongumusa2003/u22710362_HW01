@@ -5,9 +5,10 @@ using System.Web;
 
 namespace RescueBus.Models
 {
-    public class Reason
+    public class BookingRepository
     {
-        public int ReasonID { get; set; }
-        public string Description { get; set; }
+        public static List<Booking> Bookings = new List<Booking>();
+        
     }
+
 }

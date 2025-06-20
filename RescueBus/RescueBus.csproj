@@ -120,16 +120,25 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Booking.cs" />
+    <Compile Include="Models\BookingConfirmedViewModel.cs" />
+    <Compile Include="Models\BookingRepository.cs" />
     <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\DriverRepository.cs" />
     <Compile Include="Models\Reason.cs" />
-    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Models\ReasonRepository.cs" />
+    <Compile Include="Models\RideHistoryViewModel.cs" />
+    <Compile Include="Models\ServiceRepository.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\VehicleDriverViewModel.cs" />
+    <Compile Include="Models\VehicleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,12 +160,15 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Images\Ambulance.png" />
     <Content Include="Content\Images\Demo.jpg" />
+    <Content Include="Content\Images\Drivers\driver1.png" />
     <Content Include="Content\Images\Logo.JPG" />
     <Content Include="Content\Images\Services\service1.jpg" />
     <Content Include="Content\Images\SOS.jpg" />
     <Content Include="Content\Images\system_Logo.png" />
     <Content Include="Content\Images\tick_icon.jpg" />
     <Content Include="Content\Images\time_logo.png" />
+    <Content Include="Content\Images\Vehicles\vehicle1.jpg" />
+    <Content Include="Content\Images\Vehicles\vehicle2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -189,6 +201,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\Home\Book.cshtml" />
+    <Content Include="Views\Home\BookingConfirmed.cshtml" />
+    <Content Include="Views\Vehicle\Create.cshtml" />
+    <Content Include="Views\Vehicle\Edit.cshtml" />
+    <Content Include="Views\Driver\Index.cshtml" />
+    <Content Include="Views\Driver\Edit.cshtml" />
+    <Content Include="Views\Driver\Create.cshtml" />
+    <Content Include="Views\Home\VehicleDriver.cshtml" />
+    <Content Include="Views\Home\RideHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

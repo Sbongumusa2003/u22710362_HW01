@@ -1,0 +1,60 @@
+﻿@model RescueBus.Models.BookingConfirmedViewModel
+
+@{
+    ViewBag.Title = "BookingConfirmed";
+}
+
+<h2>BookingConfirmed</h2>
+
+<div class="row row-cols-1 row-cols-md-1 g-4" style="width: 80%; margin: auto;">
+    <div class="col text-center">
+        <img src="~/Content/Images/tick_icon.jpg" width="100" />
+        <h2>Booking Confirmed</h2>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Booking Details</h5>
+                <p class="card-text"><strong>Booking ID:</strong> @Model.Booking.BookingID</p>
+                <p class="card-text"><strong>Date Booked:</strong> @Model.Booking.BookingDate</p>
+                <p class="card-text"><strong>Pickup Time:</strong> @Model.Booking.PickupTime.ToString("g")</p>
+                <p class="card-text"><strong>Pickup Address:</strong> @Model.Booking.PickupAddress</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@Url.Content(Model.Driver.ImagePath)" class="img-fluid rounded-start" alt="Driver Image" >
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Driver Details</h5>
+                        <p class="card-text"><strong>Name:</strong> @Model.Driver.FirstName</p>
+                        <p class="card-text"><strong>Phone Number:</strong> @Model.Driver.PhoneNumber</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@Url.Content(Model.Vehicle.ImagePath)" class="img-fluid rounded-start" alt="Vehicle Image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Ambulance Details</h5>
+                        <p class="card-text"><strong>Type:</strong> @Model.Vehicle.Type</p>
+                        <p class="card-text"><strong>Registration Number:</strong> @Model.Vehicle.RegistrationNumber</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

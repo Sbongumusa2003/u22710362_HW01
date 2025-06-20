@@ -11,7 +11,7 @@ namespace RescueBus.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ImagePath { get; set; }
-        public string RegistrationNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public int ServiceID { get; set; }
            
     }
