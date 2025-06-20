@@ -1,69 +1,107 @@
 ﻿@model RescueBus.Models.Driver
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Driver";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm("Edit", "Driver", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>Driver</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.DriverID)
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-        </div>
+<div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">Edit Driver</h2>
     </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "Driver", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.DriverID)
 
-    <div class="form-group">
-        <label class="control-label col-md-2" for="ImageFile">Upload Image</label>
-        <div class="col-md-10">
-            <input type="file" name="ImageFile" class="form-control" accept="image/*" />
-            <span class="text-danger field-validation-valid" data-valmsg-for="ImageFile" data-valmsg-replace="true"></span>
-        </div>
-    </div>
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <h4 class="border-bottom pb-2">Driver Information</h4>
+                    </div>
+                </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-        </div>
-    </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "form-label required" })
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter first name" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "form-label required" })
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter last name" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-    <div class="form-group">
-        <label for="ServiceID">Select Service:</label>
-        <select id="ServiceID" name="ServiceID" class="form-select" asp-for="ServiceID">
-            @foreach (var service in ViewBag.Services)
-            {
-                <option value="@service.ServiceID">@service.Name</option>
-            }
-        </select>
-    </div>
-    @Html.HiddenFor(model => model.ImagePath)
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "form-label required" })
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter phone number" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="ImageFile">Upload Image</label>
+                            <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+                            <span class="text-danger field-validation-valid" data-valmsg-for="ImageFile" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label required" for="ServiceID">Select Service</label>
+                            <select id="ServiceID" name="ServiceID" class="form-select" asp-for="ServiceID">
+                                @foreach (var service in ViewBag.Services)
+                                {
+                                    <option value="@service.ServiceID">@service.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                @Html.HiddenFor(model => model.ImagePath)
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary w-100" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
-}
 
+<style>
+    .required:after {
+        content: " *";
+        color: red;
+    }
 
+    .card {
+        margin-top: 20px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .card-header {
+        border-radius: 10px 10px 0 0 !important;
+    }
+
+    .border-bottom {
+        border-bottom: 2px solid #dee2e6 !important;
+    }
+</style>

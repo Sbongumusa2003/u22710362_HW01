@@ -4,29 +4,49 @@
     ViewBag.Title = "Services";
 }
 
-<h2>Services</h2>
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold mb-3">Select a service...</h1>
+        <p class="lead text-muted">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalar<br />elementum tempus hac tellus libero accumsan.</p>
+    </div>
 
+    <hr class="my-4">
 
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    @foreach (var item in Model)
-    {
-
-        <div class="col">
-            <a href="@Url.Action("Book", "Home", new { id = item.ServiceID })" class="text-decoration-none text-dark">
-                <div class="card" style="width: 18rem;">
-                    <img src="@Url.Content(item.ImagePath)" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name</h5>
-                        <p class="card-text">@item.Description</p>
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <a href="@Url.Action("Book", "Home", new { id = item.ServiceID })" class="text-decoration-none text-dark">
+                    <div class="card h-100 border-0 shadow-sm hover-shadow transition-all overflow-hidden">
+                        <div class="card-img-top overflow-hidden" style="height: 180px;">
+                            <img src="@Url.Content(item.ImagePath)" class="w-100 h-100 object-fit-cover" alt="@item.Name service">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h5 card-title text-primary mb-3">@item.Name</h3>
+                            <hr class="my-2">
+                            <p class="card-text text-secondary">@item.Description</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-4">
+                            <span class="text-primary fw-medium">Book now →</span>
+                        </div>
                     </div>
-                </div>
-            </a>
-
-        </div>
-
-    }
-
+                </a>
+            </div>
+        }
+    </div>
 </div>
 
+<style>
+    .hover-shadow:hover {
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+        transform: translateY(-2px);
+    }
 
+    .transition-all {
+        transition: all 0.25s ease;
+    }
+
+    .object-fit-cover {
+        object-fit: cover;
+    }
+</style>
