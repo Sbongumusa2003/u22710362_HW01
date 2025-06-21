@@ -13,18 +13,18 @@ namespace RescueBus.Models
             new Driver
             {
                 DriverID = 1,
-                FirstName = "John",
-                LastName = "Smith",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/driver1.png"),
+                FirstName = "Sam",
+                LastName = "Johnson",
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/Driver1.jpeg"),
                 PhoneNumber = "0812345678",
                 ServiceID = 1
             },
             new Driver
             {
                 DriverID = 2,
-                FirstName = "Sarah",
-                LastName = "Mokoena",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/driver1.png"),
+                FirstName = "Ayanda",
+                LastName = "Zulu",
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/Driver2.jpeg"),
                 PhoneNumber = "0823456789",
                 ServiceID = 2
             },
@@ -32,26 +32,26 @@ namespace RescueBus.Models
             {
                 DriverID = 3,
                 FirstName = "Peter",
-                LastName = "Zulu",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/driver1.png"),
-                PhoneNumber = "0834567890",
+                LastName = "Mbatha",
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/Driver 3.jpeg"),
+                PhoneNumber = "0612009709",
                 ServiceID = 3
             },
             new Driver
             {
                 DriverID = 4,
-                FirstName = "Lerato",
+                FirstName = "Sam",
                 LastName = "Khumalo",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/driver1.png"),
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/Driver 4.jpeg"),
                 PhoneNumber = "0845678901",
                 ServiceID = 4
             },
             new Driver
             {
                 DriverID = 5,
-                FirstName = "James",
+                FirstName = "MJ",
                 LastName = "van der Merwe",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/driver1.png"),
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Drivers/Driver 5.jpeg"),
                 PhoneNumber = "0856789012",
                 ServiceID = 5
             }

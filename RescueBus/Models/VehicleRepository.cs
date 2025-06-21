@@ -15,28 +15,28 @@ namespace RescueBus.Models
                 VehicleID = 1,
                 Type = "Ambulance",
                 RegistrationNumber = "XYZ",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Vehicles/vehicle1.jpg"),
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Vehicles/vehicle1.jpeg"),
                 ServiceID = 1
             },
             new Vehicle {
                 VehicleID = 2,
                 Type = "Ambulance",
                 RegistrationNumber = "ABC",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Vehicles/vehicle2.jpg"),
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Vehicles/vehicle2.jpeg"),
                 ServiceID = 2
             },
             new Vehicle {
                 VehicleID = 3,
                 Type = "Patient Transport",
                 RegistrationNumber = "DEF",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Vehicles/vehicle2.jpg"),
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Vehicles/vehicle3.jpeg"),
                 ServiceID = 4
             },
             new Vehicle {
-                VehicleID = 5,
+                VehicleID = 4,
                 Type = "Utility Vehicle",
                 RegistrationNumber = "GHI",
-                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Vehicles/vehicle1.jpg"),
+                ImagePath = "data:image/jpeg;base64," + ImageHelper.ImageToBase64("~/Content/Images/Vehicles/vehicle4.jpeg"),
                 ServiceID = 4
             },
         };

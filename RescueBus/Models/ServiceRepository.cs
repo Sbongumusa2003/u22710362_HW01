@@ -13,7 +13,7 @@ namespace RescueBus.Models
             ServiceID = 1,
             Name = "Advanced Life Support",
             Description = "ALS ambulance is staffed by a Paramedic and isuded to transport patients who require high level of care",
-            ImagePath = "~/Content/Images/Services/service1.jpg",
+            ImagePath = "~/Content/Images/Services/Advanceed Life Support.jpg",
             Drivers = new List<Driver>(),
             Vehicles = new List<Vehicle>()
         },
@@ -21,7 +21,7 @@ namespace RescueBus.Models
             ServiceID = 2,
             Name = "Basic Life Support",
             Description = "BLS ambulance provides transport to patient swho are in a non life threatening condition",
-            ImagePath = "~/Content/Images/Services/service1.jpg",
+            ImagePath = "~/Content/Images/Services/Basic Life Support.jpeg",
             Drivers = new List<Driver>(),
             Vehicles = new List<Vehicle>()
         },
@@ -29,7 +29,7 @@ namespace RescueBus.Models
             ServiceID = 3,
             Name = "Patient Support",
             Description = "The most basic type of transport for patients requireing ambulatory support to and from the hospital",
-            ImagePath = "~/Content/Images/Services/service1.jpg",
+            ImagePath = "~/Content/Images/Services/Patient Support.jpg",
             Drivers = new List<Driver>(){
                 
             },
@@ -39,7 +39,7 @@ namespace RescueBus.Models
             ServiceID = 4,
             Name = "Medical Utility Vehicle",
             Description = "A state-of-the-art small of large van that is designed to facilitate the mvement and transport of patients",
-            ImagePath = "~/Content/Images/Services/service1.jpg",
+            ImagePath = "~/Content/Images/Services/Medical utility Vehicle.png",
             Drivers = new List<Driver>(),
             Vehicles = new List<Vehicle>()
         },
@@ -47,7 +47,7 @@ namespace RescueBus.Models
             ServiceID = 5,
             Name = "Event Medical Ambulance",
             Description = "Ambulances that are stationed at events, such as concerts, sports games, and festivals, to provide medical assistance ",
-            ImagePath = "~/Content/Images/Services/service1.jpg",
+            ImagePath = "~/Content/Images/Services/Event Utility Vehicle.jpeg",
             Drivers = new List<Driver>(),
             Vehicles = new List<Vehicle>()
         },
@@ -55,7 +55,7 @@ namespace RescueBus.Models
             ServiceID = 6,
             Name = "Air Ambulance",
             Description  = "Air ambulance help in the transfer of patients across long distances in both emergency and non-emergency situations",
-            ImagePath = "~/Content/Images/Services/service1.jpg",
+            ImagePath = "~/Content/Images/Services/Air Ambulance.jpeg",
             Drivers = new List<Driver>(),
             Vehicles = new List<Vehicle>()
         }
