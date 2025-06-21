@@ -4,158 +4,163 @@
     ViewBag.Title = "VehicleDriver";
 }
 
-<div class="row row-cols-1 row-cols-md-1 g-4" style="width: 80%; margin: auto;">
-    <div class="col card m-xl-2 my-4 p-xl-4 py-5">
-        <div class="d-flex justify-content-between">
-            <h2>Drivers</h2>
-            <div><a href="/Driver/Create" class="btn btn-primary">Create</a></div>
-        </div>
-        <div>
-            <div class="d-flex gap-5 mb-2">
-                <input placeholder="Driver Name" class="form-control" type="text" id="DriverFirstName" />
-                <select id="ServiceDropdown" name="ServiceID" class="form-select" asp-for="ServiceID">
-                    <option value="">Service</option>
-                    @foreach (var service in ViewBag.Services)
-                    {
-                        <option value="@service.ServiceID">@service.Name</option>
-                    }
+<div class="container-fluid py-4">
+    <div class="row">
+        <!-- Drivers Section -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white border-bottom-0 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0 text-primary">
+                            <i class="fas fa-users me-2"></i>Drivers
+                        </h3>
+                        <a href="/Driver/Create" class="btn btn-primary">
+                            <i class="fas fa-plus me-1"></i>Create
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-5">
+                            <input placeholder="Driver Name" class="form-control" type="text" id="DriverFirstName" />
+                        </div>
+                        <div class="col-md-5">
+                            <select id="ServiceDropdown" name="ServiceID" class="form-select" asp-for="ServiceID">
+                                <option value="">All Services</option>
+                                @foreach (var service in ViewBag.Services)
+                                {
+                                    <option value="@service.ServiceID">@service.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button id="btn-Search" class="btn btn-success w-100">
+                                <i class="fas fa-search me-1"></i>Search
+                            </button>
+                        </div>
+                    </div>
 
-                </select>
-
-                <button id="btn-Search" class="btn btn-success">Search</button>
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="drivers">
+                            <thead class="table-light">
+                                <tr>
+                                    <th width="80px">Image</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Phone</th>
+                                    <th>Service</th>
+                                    <th width="150px">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Drivers)
+                                {
+                                    var serviceName = ServiceRepository.Services.FirstOrDefault(s => s.ServiceID == item.ServiceID)?.Name ?? "";
+                                    <tr data-firstname="@item.FirstName.ToLower()" data-service="@serviceName.ToLower()">
+                                        <td>
+                                            <img src="@item.ImagePath" alt="Driver" class="rounded-circle" width="50" height="50" style="object-fit: cover;" />
+                                        </td>
+                                        <td class="align-middle">@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                        <td class="align-middle">@Html.DisplayFor(modelItem => item.LastName)</td>
+                                        <td class="align-middle">@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                        <td class="align-middle">@serviceName</td>
+                                        <td class="align-middle">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                @Html.ActionLink("Edit", "Edit", "Driver", new { id = item.DriverID }, new { @class = "btn btn-outline-warning" })
+                                                @Html.ActionLink("Delete", "Delete", "Driver", new { id = item.DriverID }, new { @class = "btn btn-outline-danger" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <table class="table" id="drivers">
-                <thead class="table-secondary">
-                    <tr>
-                        <th>
-                            IMAGE
-                        </th>
-                        <th>
-                            FIRST NAME
-                        </th>
-                        <th>
-                            LAST NAME
-                        </th>
-                        <th>
-                            PHONE NUMBER
-                        </th>
-                        <th>
-                            SERVICE
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Drivers)
-                    {
-                        var serviceName = ServiceRepository.Services.FirstOrDefault(s => s.ServiceID == item.ServiceID)?.Name ?? "";
-                        <tr data-firstname="@item.FirstName.ToLower()" data-service="@serviceName.ToLower()">
-                            <td><img src="@item.ImagePath" alt="Driver" width="50" /></td>
-                            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                            <td>@serviceName</td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", "Driver", new { id = item.DriverID }, new { @class = "btn btn-warning" })
-                                @Html.ActionLink("Delete", "Delete", "Driver", new { id = item.DriverID }, new { @class = "btn btn-danger" })
-                            </td>
-                        </tr>
-                    }
-
-                </tbody>
-            </table>
         </div>
 
-    </div>
-    <div class="col card m-xl-2 my-4 p-xl-4 py-5">
-        <div class="d-flex justify-content-between">
-            <h2>Vehicles</h2>
-            <div><a href="/Vehicle/Create" class="btn btn-primary">Create</a></div>
-        </div>
-        <table class="table">
-
-            <thead class="table-secondary">
-                <tr>
-                    <th>
-                        IMAGE
-                    </th>
-                    <th>
-                        TYPE
-                    </th>
-                    <th>
-                        REGISTRATION
-                    </th>
-                    <th>
-                        SERVICE
-                    </th>
-                    <th>
-                        Controls
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Vehicles)
-                {
-                    <tr>
-
-
-                        <td>
-                            <img src="@item.ImagePath" alt="Vehicle" width="100" />
-
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Type)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RegistrationNumber)
-                        </td>
-                        <td>
-
-                            @(ServiceRepository.Services.FirstOrDefault(s => s.ServiceID == item.ServiceID)?.Name)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", "Vehicle", new { id = item.VehicleID }, new { @class = "btn btn-warning" })
-
-                            @Html.ActionLink("Delete", "Delete", "Vehicle", new { id = item.VehicleID }, new { @class = "btn btn-danger" })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-end">
-            <form method="post" action="@Url.Action("ExportToTextFile", "Vehicle")">
-                <button type="submit" class="btn btn-success">Export Vehicles to Text File</button>
-            </form>
+        <!-- Vehicles Section -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white border-bottom-0 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0 text-primary">
+                            <i class="fas fa-bus me-2"></i>Vehicles
+                        </h3>
+                        <a href="/Vehicle/Create" class="btn btn-primary">
+                            <i class="fas fa-plus me-1"></i>Create
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th width="100px">Image</th>
+                                    <th>Type</th>
+                                    <th>Registration</th>
+                                    <th>Service</th>
+                                    <th width="150px">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Vehicles)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@item.ImagePath" alt="Vehicle" class="rounded" width="80" height="60" style="object-fit: cover;" />
+                                        </td>
+                                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Type)</td>
+                                        <td class="align-middle">@Html.DisplayFor(modelItem => item.RegistrationNumber)</td>
+                                        <td class="align-middle">
+                                            @(ServiceRepository.Services.FirstOrDefault(s => s.ServiceID == item.ServiceID)?.Name)
+                                        </td>
+                                        <td class="align-middle">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                @Html.ActionLink("Edit", "Edit", "Vehicle", new { id = item.VehicleID }, new { @class = "btn btn-outline-warning" })
+                                                @Html.ActionLink("Delete", "Delete", "Vehicle", new { id = item.VehicleID }, new { @class = "btn btn-outline-danger" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <form method="post" action="@Url.Action("ExportToTextFile", "Vehicle")">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-file-export me-1"></i>Export Vehicles
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-@section Scripts{
-
+@section Scripts {
     <script>
-    document.getElementById("btn-Search").addEventListener("click", function () {
-        const nameInput = document.getElementById("DriverFirstName").value.trim().toLowerCase();
-        const serviceInput = document.getElementById("ServiceDropdown").value;
+        document.getElementById("btn-Search").addEventListener("click", function () {
+            const nameInput = document.getElementById("DriverFirstName").value.trim().toLowerCase();
+            const serviceInput = document.getElementById("ServiceDropdown").value;
 
-        const rows = document.querySelectorAll("#drivers tbody tr");
+            const rows = document.querySelectorAll("#drivers tbody tr");
 
-        rows.forEach(row => {
-            const rowName = row.getAttribute("data-firstname");
-            const rowServiceId = row.getAttribute("data-service");
+            rows.forEach(row => {
+                const rowName = row.getAttribute("data-firstname");
+                const rowServiceId = row.getAttribute("data-service");
 
-            const nameMatches = !nameInput || rowName.includes(nameInput);
-            const serviceMatches = !serviceInput || rowServiceId === document.querySelector(`#ServiceDropdown option[value="${serviceInput}"]`)?.textContent.toLowerCase();
+                const nameMatches = !nameInput || rowName.includes(nameInput);
+                const serviceMatches = !serviceInput || rowServiceId === document.querySelector(`#ServiceDropdown option[value="${serviceInput}"]`)?.textContent.toLowerCase();
 
-            if (nameMatches && serviceMatches) {
-                row.style.display = "";
-            } else {
-                row.style.display = "none";
-            }
+                if (nameMatches && serviceMatches) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
         });
-    });
     </script>
-
-
 }

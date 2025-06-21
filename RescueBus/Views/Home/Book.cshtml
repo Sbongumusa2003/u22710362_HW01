@@ -4,128 +4,162 @@
     ViewBag.Title = "Book";
 }
 
-<h2>Book</h2>
-
-@using (Html.BeginForm("CreateBooking", "Home", FormMethod.Post ))
-{
-    @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>Booking</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-        </div>
+<div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h2 class="mb-0"><i class="fas fa-calendar-check me-2"></i>Create Booking</h2>
     </div>
+    <div class="card-body">
+        @using (Html.BeginForm("CreateBooking", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PickupTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <h4 class="border-bottom pb-2"><i class="fas fa-user-circle me-2"></i>Personal Information</h4>
+                    </div>
+                </div>
 
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.PickupTime, new { @class = "form-control", type = "time" })
-            @Html.ValidationMessageFor(model => model.PickupTime, "", new { @class = "text-danger" })
-        </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter full name" } })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter phone number" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-    </div>
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <h4 class="border-bottom pb-2"><i class="fas fa-map-marker-alt me-2"></i>Booking Details</h4>
+                    </div>
+                </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PickupAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PickupAddress, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PickupAddress, "", new { @class = "text-danger" })
-        </div>
-    </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PickupAddress, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextAreaFor(model => model.PickupAddress, new { @class = "form-control", rows = 3, placeholder = "Enter pickup address" })
+                            @Html.ValidationMessageFor(model => model.PickupAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PickupTime, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.PickupTime, new { @class = "form-control", type = "time" })
+                            @Html.ValidationMessageFor(model => model.PickupTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-    <div class="form-group">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BookingDate, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.BookingDate, new { @class = "form-control", type = "datetime-local" })
+                            @Html.ValidationMessageFor(model => model.BookingDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Emergency</label>
+                            <div class="form-check form-switch mt-2">
+                                <input class="form-check-input" type="checkbox" id="isSOS" name="isSOS" checked>
+                                <label class="form-check-label" for="isSOS">SOS Booking</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="col-md-10">
-            <div class="checkbox">
-                <input type="hidden" id="isSOS" name="isSOS" value="true" />
-                <span class="text-danger" data-valmsg-for="isSOS" data-valmsg-replace="true"></span>
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <h4 class="border-bottom pb-2"><i class="fas fa-car me-2"></i>Service Selection</h4>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label" for="DriverID">Driver</label>
+                            <select id="DriverID" name="DriverID" class="form-select">
+                                @foreach (var driver in ViewBag.drivers)
+                                {
+                                    <option value="@driver.DriverID">@driver.FirstName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label" for="VehicleID">Vehicle</label>
+                            <select id="VehicleID" name="VehicleID" class="form-select">
+                                @foreach (var vehicle in ViewBag.Vehicles)
+                                {
+                                    <option value="@vehicle.VehicleID">@vehicle.Type</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label" for="ReasonID">Reason</label>
+                            <select id="ReasonID" name="ReasonID" class="form-select">
+                                @foreach (var reason in ViewBag.reasons)
+                                {
+                                    <option value="@reason.ReasonID">@reason.Description</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" class="form-control" id="ServiceID" name="ServiceID" value="@ViewBag.ServiceID">
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary w-100 py-2">
+                                <i class="fas fa-save me-2"></i>Create Booking
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.BookingDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.BookingDate, new { @class = "form-control", type = "datetime-local" })
-            @Html.ValidationMessageFor(model => model.BookingDate, "", new { @class = "text-danger" })
-        </div>
-
-    </div>
-
-    <div class="form-group">
-        <label for="DriverID">Select Driver:</label>
-        <select id="DriverID" name="DriverID" class="form-select">
-            @foreach (var driver in ViewBag.drivers)
-            {
-                <option value="@driver.DriverID">@driver.FirstName</option>
-            }
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label for="VehicleID">Select Vehicle:</label>
-        <select id="VehicleID" name="VehicleID" class="form-select">
-            @foreach (var vehicle in ViewBag.Vehicles)
-            {
-                <option value="@vehicle.VehicleID">@vehicle.Type</option>
-            }
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label for="VehicleID"></label>
-    </div>
-
-
-
-    <input type="hidden" class="form-control" id="ServiceID" name="ServiceID" value="@ViewBag.ServiceID">
-
-
-    <div class="form-group">
-        <label for="ReasonID">Select Driver:</label>
-        <select id="ReasonID" name="ReasonID" class="form-select">
-            @foreach (var reason in ViewBag.reasons)
-            {
-                <option value="@reason.ReasonID">@reason.Description</option>
-            }
-        </select>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.PickupAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.PickupAddress, new { @class = "form-control", rows = 4 })
-            @Html.ValidationMessageFor(model => model.PickupAddress, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
+        }
     </div>
 </div>
+
+<style>
+    .card {
+        margin-top: 20px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .card-header {
+        border-radius: 10px 10px 0 0 !important;
+    }
+
+    .border-bottom {
+        border-bottom: 2px solid #dee2e6 !important;
+    }
+
+    .form-switch .form-check-input {
+        width: 3em;
+        height: 1.5em;
+    }
+</style>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 }
-
-
-
-
-
-
